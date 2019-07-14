@@ -1,0 +1,45 @@
+<h1>Roof Stock</h1>
+<p>Welcome to Roof Stock, built with:</p>
+<ul>
+  <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a
+      href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>
+  <li><a href='https://angular.io/'>Angular</a> and <a href='http://www.typescriptlang.org/'>TypeScript</a> for
+    client-side code</li>
+  <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>
+</ul>
+<h1>Property Listings</h1>
+<table class="table table-responsive">
+  <thead>
+    <th>Address (Address1-2, District, City, State, Country, County, zip)</th>
+    <th>Year Built</th>
+    <th>List Price $</th>
+    <th>Monthly Rent $</th>
+    <th>Gross Yield %</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of properties.properties">
+      <td>{{p.address.address1 + (p.address.address2 && ', ' + p.address.address2)
+        + (p.address.district && ', '+p.address.district)     
+        + (p.address.city && ', '+p.address.city)   
+        + (p.address.state && ', '+p.address.state)    
+        + (p.address.country && ', '+p.address.country)      
+        + (p.address.county && ', '+p.address.county)   
+        + (p.address.zip && ', '+p.address.zip)      
+      }}
+      </td>
+      <td>{{p.physical && p.physical.yearBuilt || 'NA'}}</td>
+      <td>{{p.financial && (p.financial.listPrice | currency:'USD':'symbol':'3.2-2') || 'NA'}}</td>
+      <td>{{p.financial && (p.financial.monthlyRent  | currency:'USD':'symbol':'3.2-2') || 'NA'}}</td>
+      <td>
+        {{p.financial 
+          && (((p.financial.monthlyRent * 12)/p.financial.listPrice) 
+              | currency:'USD':'symbol':'1.2-2') 
+          || 'NA'}}
+      </td>
+      <td>
+        <input class="btn btn-primary" type="button" value="Save">
+      </td>
+    </tr>
+  </tbody>
+</table>

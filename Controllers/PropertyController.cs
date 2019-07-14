@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using RoofStock.Models;
@@ -20,10 +21,18 @@ namespace RoofStock.Controllers
         }
 
         [HttpPost]
-        public Property SaveProperty([FromBody] Property property)
+        public Object SaveProperty([FromBody] Property property)
         {
-            db.Property.Add(property);
-            db.SaveChanges();
+            try
+            {
+                db.Property.Add(property);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+
             return property;
         }
 

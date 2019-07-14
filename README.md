@@ -13,6 +13,7 @@ dotnet restore
 cd .\ClientApp\
 npm install
 npm audit fix
+cd..
 dotnet ef database update
 dotnet run
 

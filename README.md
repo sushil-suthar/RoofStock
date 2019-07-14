@@ -3,6 +3,7 @@
 Please Open the the root folder in Visual Studio Code or Visual Studio 2017.
 
 please change the connection string in appSettings.json file as per your system.
+
 "ConnectionStrings": {
     "Default": "server=DESKTOP-4DM8JFT\\SQLEXPRESS(change it to your sql server); database=RoofStock; user id=sa; password=sushil"
   }

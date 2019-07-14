@@ -14,13 +14,17 @@ namespace RoofStock.Controllers
         {
             this.db = db;
         }
+        public IEnumerable<Property> GetProperty()
+        {
+            return db.Property;
+        }
 
         [HttpPost]
-        public bool SaveProperty(Property property)
+        public Property SaveProperty([FromBody] Property property)
         {
             db.Property.Add(property);
             db.SaveChanges();
-            return true;
+            return property;
         }
 
     }

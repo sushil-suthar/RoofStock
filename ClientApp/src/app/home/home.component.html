@@ -18,27 +18,19 @@
     <th>Action</th>
   </thead>
   <tbody>
-    <tr *ngFor="let p of properties.properties">
-      <td>{{p.address.address1 + (p.address.address2 && ', ' + p.address.address2)
-        + (p.address.district && ', '+p.address.district)     
-        + (p.address.city && ', '+p.address.city)   
-        + (p.address.state && ', '+p.address.state)    
-        + (p.address.country && ', '+p.address.country)      
-        + (p.address.county && ', '+p.address.county)   
-        + (p.address.zip && ', '+p.address.zip)      
-      }}
+    <tr *ngFor="let p of AllProperties">
+      <td>{{p.Address}}
       </td>
-      <td>{{p.physical && p.physical.yearBuilt || 'NA'}}</td>
-      <td>{{p.financial && (p.financial.listPrice | currency:'USD':'symbol':'3.2-2') || 'NA'}}</td>
-      <td>{{p.financial && (p.financial.monthlyRent  | currency:'USD':'symbol':'3.2-2') || 'NA'}}</td>
+      <td>{{p.YearBuilt || 'NA'}}</td>
+      <td>{{(p.ListPrice | currency:'USD':'symbol':'3.2-2') || 'NA'}}</td>
+      <td>{{(p.MonthlyRent  | currency:'USD':'symbol':'3.2-2') || 'NA'}}</td>
       <td>
-        {{p.financial 
-          && (((p.financial.monthlyRent * 12)/p.financial.listPrice) 
-              | currency:'USD':'symbol':'1.2-2') 
+        {{(p.GrossYield
+              | percent:'1.2-2')
           || 'NA'}}
       </td>
       <td>
-        <input class="btn btn-primary" type="button" value="Save">
+        <input class="btn btn-primary" type="button" (click)="onSave(p)" value="Save">
       </td>
     </tr>
   </tbody>

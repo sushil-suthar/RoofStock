@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
     console.log(SelectedProperty);
     this.propertyService.saveProperty(SelectedProperty).subscribe(result => {
       console.log(result);
-      alert('Property saved in database with Id=' + result.propertyId);
+      alert('Property saved in database with Id=' + result['propertyId']);
     });
   }
 

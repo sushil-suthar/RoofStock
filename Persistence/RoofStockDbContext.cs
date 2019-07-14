@@ -7,7 +7,7 @@ namespace RoofStock.Persistence
     {
         public RoofStockDbContext(DbContextOptions<RoofStockDbContext> options) : base(options)
         {
-
+            Database.Migrate();
         }
         public DbSet<Property> Property { get; set; }
     }
